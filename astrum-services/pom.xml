@@ -7,9 +7,9 @@
     <groupId>net.blendout</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>net.blendout</groupId>
+  <groupId>net.blendout.astrum</groupId>
   <artifactId>astrum-services</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <name>astrum-services</name>
   <url>http://maven.apache.org</url>
   <properties>
