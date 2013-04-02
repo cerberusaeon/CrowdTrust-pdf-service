@@ -1,17 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>net.blendout</groupId>
-  <artifactId>astrum</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<groupId>net.blendout</groupId>
+	<artifactId>astrum</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-  <modules>
-	  <module>astrum-common</module>
-	  <module>astrum-services</module>
-	  <module>astrum-web</module>
-  </modules>
+	<modules>
+		<module>astrum-common</module>
+		<module>astrum-services</module>
+		<module>astrum-web</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<hsqldb.version>2.2.9</hsqldb.version>
+		<hibernate-core.version>4.1.10.Final</hibernate-core.version>
+		<hibernate-entitymanager.version>4.1.10.Final</hibernate-entitymanager.version>
+		<downloadSources>true</downloadSources>
+		<downloadJavadocs>true</downloadJavadocs>
+	</properties>
+
+
+	<repositories>
+		<repository>
+			<id>repository.jboss.org</id>
+			<name>JBOSS Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/</url>
+		</repository>
+
+	</repositories>
+
+
+	<dependencies>
+	
+	<!-- hibernate dependencies -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate-core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate-entitymanager.version}</version>
+		</dependency>
+		
+	<!-- hibernate dependencies -->	
+
+	</dependencies>
+
 </project>

@@ -1,26 +1,48 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>astrum</artifactId>
-    <groupId>net.blendout</groupId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <groupId>net.blendout</groupId>
-  <artifactId>astrum-common</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>astrum-common</name>
-  <url>http://maven.apache.org</url>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>astrum</artifactId>
+		<groupId>net.blendout</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>net.blendout</groupId>
+	<artifactId>astrum-common</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>astrum-common</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdbc.driver.class>org.hsqldb.jdbcDriver</jdbc.driver.class>
+		<jdbc.connection.url>jdbc:hsqldb:mem:astrumdb</jdbc.connection.url>
+		<jdbc.connection.user>sa</jdbc.connection.user>
+		<jdbc.connection.pass></jdbc.connection.pass>
+		<hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
+		<hibernate.hbm2dll>create</hibernate.hbm2dll>
+		<!-- <hibernate.hbm2dll.importfiles>/import.sql</hibernate.hbm2dll.importfiles> -->
+		<hibernate.hbm2dll.extractor>org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</hibernate.hbm2dll.extractor>
+		<hibernate.show_sql>true</hibernate.show_sql>
+		<hibernate.generate_statistics>false</hibernate.generate_statistics>
+
+
+	</properties>
+	<dependencies>
+	
+	<!-- HSQLDB & Hibernate -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsqldb.version}</version>
+		</dependency>
+		
+	
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 </project>
