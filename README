@@ -8,21 +8,25 @@ Project state: prototype
 -------------------------------------------------------------------------------
 Credits
 	Stephen Ohimor stephen.ohimor@gmail.com
-	
--------------------------------------------------------------------------------
-Project description
 
-Generic web application with javascript front end
+Project description	
 -------------------------------------------------------------------------------
-Dependencies:
+Generic web application with javascript front end
+
+
+Dependencies
+-------------------------------------------------------------------------------
 
 Hibernate
 Hsqldb
--------------------------------------------------------------------------------
-Documentation
 
+
+Documentation
 -------------------------------------------------------------------------------
+
+
 Installation instructions
+-------------------------------------------------------------------------------
 
 Install JDK 1.6+
 Install Maven 3
