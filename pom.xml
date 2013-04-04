@@ -21,7 +21,10 @@
 		<hibernate-entitymanager.version>4.1.10.Final</hibernate-entitymanager.version>
 		<slf4j.version>1.7.0</slf4j.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
-		
+		<spring.version>3.2.0.RELEASE</spring.version>
+		<junit.version>4.11</junit.version>
+		<javaee.api.version>6.0</javaee.api.version>
+		<spring-data.version>1.1.0.RELEASE</spring-data.version>
 		<downloadSources>true</downloadSources>
 		<downloadJavadocs>true</downloadJavadocs>
 	</properties>
@@ -52,7 +55,7 @@
 		</dependency>
 
 		<!-- hibernate dependencies -->
-		
+
 		<!-- slf4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -65,7 +68,56 @@
 			<version>${slf4j.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		<!--  slf4j -->
+		<!-- slf4j -->
+
+		<!-- Spring Framework -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Spring Data -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data.version}</version>
+		</dependency>
+		
+
+		<!-- javax.inject SUN implementation but could use javax.inject -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
 
 	</dependencies>
 

@@ -9,7 +9,8 @@ import javax.persistence.EntityManager;
 import org.astrum.common.domain.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.stereotype.Repository;
+@Repository
 public class PersonDAO extends BaseDAO {
 
 	protected static Logger logger = LoggerFactory.getLogger(PersonDAO.class);
