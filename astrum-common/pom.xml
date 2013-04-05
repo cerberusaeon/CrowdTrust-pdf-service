@@ -28,8 +28,8 @@
 
 	</properties>
 	<dependencies>
-	
-	<!-- slf4j -->
+
+		<!-- slf4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -42,7 +42,7 @@
 			<scope>runtime</scope>
 		</dependency>
 		<!-- slf4j -->
-		
+
 		<!-- Spring Framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -86,12 +86,14 @@
 		</dependency>
 
 
-<!-- javax.inject SUN implementation but could use javax.inject -->
+		<!-- javax.inject SUN implementation but could use javax.inject -->
+		<!-- <dependency> <groupId>javax</groupId> <artifactId>javaee-api</artifactId> 
+			<version>${javaee.api.version}</version> <scope>provided</scope> </dependency> -->
+		<!-- @Inject annotation support -->
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>${javaee.api.version}</version>
-			<scope>provided</scope>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>${javax.inject.version}</version>
 		</dependency>
 
 		<dependency>
@@ -103,7 +105,25 @@
 
 	</dependencies>
 
-
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>import.sql</include>
+					<include>*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
 
 
 </project>
