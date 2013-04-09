@@ -24,6 +24,7 @@ Hsqldb
 Documentation
 -------------------------------------------------------------------------------
 
+Servlet context Simple Endpoint: http://localhost:8080/astrum/rest/user/{yourMessage}
 
 Installation instructions
 -------------------------------------------------------------------------------

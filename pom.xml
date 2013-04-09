@@ -15,6 +15,7 @@
 	</modules>
 
 	<properties>
+		<cxf.version>2.7.3</cxf.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<hsqldb.version>2.2.9</hsqldb.version>
 		<hibernate-core.version>4.1.10.Final</hibernate-core.version>
