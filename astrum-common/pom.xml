@@ -15,30 +15,29 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jdbc.driver.class>org.hsqldb.jdbcDriver</jdbc.driver.class>
-		<jdbc.connection.url>jdbc:hsqldb:mem:astrumdb</jdbc.connection.url>
-		<jdbc.connection.user>sa</jdbc.connection.user>
-		<jdbc.connection.pass></jdbc.connection.pass>
-		<hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
-		<hibernate.hbm2dll>create</hibernate.hbm2dll>
-		<hibernate.hbm2dll.importfiles>/import.sql</hibernate.hbm2dll.importfiles>
-		<hibernate.hbm2dll.extractor>org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</hibernate.hbm2dll.extractor>
-		<hibernate.show_sql>true</hibernate.show_sql>
-		<hibernate.generate_statistics>false</hibernate.generate_statistics>
-
+		<mysql-connector.version>5.1.24</mysql-connector.version>
 	</properties>
 	<dependencies>
+		<!-- hibernate dependencies -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
+
+		<!-- hibernate dependencies -->
 
 		<!-- slf4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<!-- slf4j -->
@@ -47,44 +46,68 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-aop</artifactId>
+					<groupId>org.springframework</groupId>
 				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-aop</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- Spring Data -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-aop</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 
 		<!-- HSQLDB & Hibernate -->
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-			<version>${hsqldb.version}</version>
 		</dependency>
 
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 
 		<!-- javax.inject SUN implementation but could use javax.inject -->
 		<!-- <dependency> <groupId>javax</groupId> <artifactId>javaee-api</artifactId> 
@@ -93,13 +116,11 @@
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
-			<version>${javax.inject.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -123,6 +144,17 @@
 				</includes>
 			</resource>
 		</resources>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
 	</build>
 
 

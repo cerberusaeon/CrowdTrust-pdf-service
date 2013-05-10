@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 @Entity
 @Table (name = "PERSONS" )
@@ -20,8 +20,7 @@ public class Person {
 	private Date dateOfBirth;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PersonSequence")
-	@SequenceGenerator(name="PersonSequence", sequenceName="personSequence")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long getPersonId() {
 		return personId;
 	}
