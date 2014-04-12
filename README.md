@@ -44,3 +44,16 @@ Additional Notes
 astrum-common - contains domain/model objects
 astrum-services - contains REST services/endpoints for app
 astrum-web - js/image
+
+-------------------------------------------------------------------------------
+Changes
+
+-.project
+-top level folder names *common, *services, * web
+-top level pom
+-common pom.xml
+-common .project
+-services .pom.xml
+-services .project
+-web pom.xml
+-web .project

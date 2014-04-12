@@ -9,7 +9,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>astrum-common</module>
 		<module>astrum-services</module>
 		<module>astrum-web</module>
 	</modules>
@@ -60,17 +59,6 @@
 	<dependencyManagement>
 		<dependencies>
 
-			<!-- hibernate dependencies -->
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-core</artifactId>
-				<version>${hibernate-core.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-entitymanager</artifactId>
-				<version>${hibernate-entitymanager.version}</version>
-			</dependency>
 
 			<!-- hibernate dependencies -->
 
@@ -189,24 +177,6 @@
 				</exclusions>
 			</dependency>
 
-
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>5.1.24</version>
-			</dependency>
-
-			<!-- HSQLDB & Hibernate -->
-			<dependency>
-				<groupId>org.hsqldb</groupId>
-				<artifactId>hsqldb</artifactId>
-				<version>${hsqldb.version}</version>
-			</dependency>
-
-			<!-- javax.inject SUN implementation but could use javax.inject -->
-			<!-- <dependency> <groupId>javax</groupId> <artifactId>javaee-api</artifactId> 
-				<version>${javaee.api.version}</version> <scope>provided</scope> </dependency> -->
-			<!-- @Inject annotation support -->
 			<dependency>
 				<groupId>javax.inject</groupId>
 				<artifactId>javax.inject</artifactId>
@@ -247,22 +217,6 @@
 					<value>true</value>
 				</property>
 			</activation>
-
-			<properties>
-
-				<jdbc.driver.class>com.mysql.jdbc.Driver</jdbc.driver.class>
-				<jdbc.connection.url>jdbc:mysql://mangrovesolutions.net:3306/astrum</jdbc.connection.url>
-				<jdbc.connection.user>astrum</jdbc.connection.user>
-				<jdbc.connection.pass>northern</jdbc.connection.pass>
-				<hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
-				<hibernate.hbm2dll>update</hibernate.hbm2dll>
-				<hibernate.hbm2dll.importfiles>/import.sql</hibernate.hbm2dll.importfiles>
-				<hibernate.hbm2dll.extractor>org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</hibernate.hbm2dll.extractor>
-				<hibernate.show_sql>true</hibernate.show_sql>
-				<hibernate.generate_statistics>false</hibernate.generate_statistics>
-			</properties>
-
-
 		</profile>
 	</profiles>
 

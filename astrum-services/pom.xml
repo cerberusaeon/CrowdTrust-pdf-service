@@ -132,14 +132,7 @@
 				<artifactId>junit</artifactId>
 				<scope>test</scope>
 			</dependency>
-		
-		
-		
-		<dependency>
-			<groupId>net.blendout.astrum</groupId>
-			<artifactId>astrum-common</artifactId>
-			<version>0.0.2-SNAPSHOT</version>
-		</dependency>
+
 
 	</dependencies>
 

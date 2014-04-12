@@ -158,7 +158,7 @@
 					</webAppConfig>
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.bio.SocketConnector">
-							<port>8585</port>
+							<port>1776</port>
 						</connector>
 					</connectors>
 				</configuration>
