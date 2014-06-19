@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.UUID;
 
@@ -22,6 +24,7 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.multipart.FormDataMultiPart;
+import com.sun.jersey.multipart.file.FileDataBodyPart;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -140,7 +143,7 @@ public class UserRestServiceTest {
 		
 		String random = UUID.randomUUID().toString();
 		Client client = Client.create();
-		WebResource resource = client.resource("http://sancus-vm:1776/astrum/rest/user/echo/"+random);
+		WebResource resource = client.resource("http://mangrovesolutions.net:1777/astrum/rest/user/echo/"+random);
 		
 		ClientResponse response = resource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 		
@@ -151,25 +154,11 @@ public class UserRestServiceTest {
 	}
 	@Test
 	public void postFileToServer() throws IOException{
-		InputStream stream = getClass().getClassLoader().getResourceAsStream("report.pdf");
+		InputStream stream = getClass().getClassLoader().getResourceAsStream("report01.pdf");
 		long startTime = System.currentTimeMillis();
-		/////////
-		
-		/*byte[] data = null;
-		
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		int next = fis.read();
-		while (next > -1) {
-		    bos.write(next);
-		    next = fis.read();
-		}
-		bos.flush();
-		data = bos.toByteArray();
-		fis.close();*/
-		////////////
 	    FormDataMultiPart part = new FormDataMultiPart().field("file", stream, MediaType.APPLICATION_OCTET_STREAM_TYPE);
 
-	    WebResource resource = Client.create().resource("http://sancus-vm:1776/astrum/rest/user/report");
+	    WebResource resource = Client.create().resource("http://mangrovesolutions.net:1777/astrum/rest/user/report");
 	    String response = resource.type(MediaType.MULTIPART_FORM_DATA_TYPE).post(String.class, part);
 	    System.out.println(response);
 	    long stopTime = System.currentTimeMillis();
@@ -178,6 +167,70 @@ public class UserRestServiceTest {
 	   // assertEquals("Hello, World", response);
 	}
 	
+	@Test
+	public void postFileToServerNLP() throws IOException{
+		InputStream stream = getClass().getClassLoader().getResourceAsStream("report01.pdf");
+		long startTime = System.currentTimeMillis();
+	    FormDataMultiPart part = new FormDataMultiPart().field("file", stream, MediaType.APPLICATION_OCTET_STREAM_TYPE);
+
+	    WebResource resource = Client.create().resource("http://crowdtrustnlp.elasticbeanstalk.com/api/PdfToHtml");
+	    String response = resource.type(MediaType.MULTIPART_FORM_DATA_TYPE).post(String.class, part);
+	    System.out.println(response);
+	    long stopTime = System.currentTimeMillis();
+	    long totalTime = (stopTime - startTime) /1000;
+	    System.out.println("total time: "+totalTime);
+	   // assertEquals("Hello, World", response);
+	}
+	
+	@Test
+	public void postFileToServerNLPAlt() throws IOException{
+		try {
+
+			   Client client = Client.create();
+
+			   WebResource webResource = client
+			     .resource("http://crowdtrustnlp.elasticbeanstalk.com/api/PdfToHtml");
+
+			   File f = new File(getClass().getClassLoader().getResource("report01.pdf").toURI());
+			   FileDataBodyPart fdp = new FileDataBodyPart("file", f,
+			     MediaType.APPLICATION_OCTET_STREAM_TYPE);
+
+			   FormDataMultiPart formDataMultiPart = new FormDataMultiPart();
+
+			   formDataMultiPart.bodyPart(fdp);
+
+			   String reString = webResource.type(MediaType.MULTIPART_FORM_DATA)
+			     .accept(MediaType.TEXT_HTML)
+			     .post(String.class, formDataMultiPart);
+			   System.out.println(reString);
+
+			   System.out.println("Output from Server .... \n");
+
+			  } catch (Exception e) {
+
+			   e.printStackTrace();
+
+			  }
+
+	}
+	
+	public File getFile(FileInputStream inStream) throws IOException{
+
+		File file =new File("file.txt");
+		OutputStream outStream = null;
+		outStream = new FileOutputStream(file);
+
+		byte[] buffer = new byte[1024];
+		            int length;
+		            //copy the file content in bytes 
+		            while ((length = inStream.read(buffer)) > 0){
+		                outStream.write(buffer, 0, length);
+		            }
+		            outStream.close();
+
+		return file;
+
+		}
 	private static String getStringFromInputStream(InputStream is) {
 		 
 		BufferedReader br = null;

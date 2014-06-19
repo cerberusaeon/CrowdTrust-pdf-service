@@ -57,3 +57,4 @@ http://mangrovesolutions.net:1777/astrum/rest/user/echo/${yourString}
 To use service post a Media type of MULTIPART_FORM_DATA_TYPE.  The services expects the type to be an octect input stream.  
 http://mangrovesolutions.net:1777/astrum/rest/user/report
 
+check
