@@ -23,7 +23,7 @@
 		<jersey-server.version>1.8</jersey-server.version>
 		<junit.version>4.11</junit.version>
 		<javaee.api.version>6.0</javaee.api.version>
-		<spring-data.version>1.2.1.RELEASE</spring-data.version>
+		<spring-data.version>1.11.23.RELEASE</spring-data.version>
 		<javax.inject.version>1</javax.inject.version>
 		<downloadSources>true</downloadSources>
 		<downloadJavadocs>true</downloadJavadocs>
